@@ -31,6 +31,16 @@ export async function getUserId(request: Request): Promise<string | undefined> {
   return userId;
 }
 
+export async function getUser(request: Request): Promise<null | User> {
+  const userId = await getUserId(request);
+  if (userId === undefined) return null;
+
+  const user = await getUserById(userId);
+  if (user) return user;
+
+  throw await logout(request);
+}
+
 export async function createUserSession({
   request,
   userId,
@@ -51,6 +61,15 @@ export async function createUserSession({
           ? 60 * 60 * 24 * 7 // 7 days
           : undefined,
       }),
+    },
+  });
+}
+
+export async function logout(request: Request) {
+  const session = await getSession(request);
+  return redirect("/", {
+    headers: {
+      "Set-Cookie": await sessionStorage.destroySession(session),
     },
   });
 }
