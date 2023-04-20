@@ -10,4 +10,7 @@ module.exports = {
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",
+  future: {
+    unstable_tailwind: true,
+  },
 };
