@@ -21,6 +21,13 @@ export default function Index() {
             Log In
           </Link>
       }
+      {!user && 
+            <Link to="/signup"
+              className="flex items-center justify-center rounded-md bg-yellow-500 px-4 py-3 font-medium text-white hover:bg-yellow-600  "
+            >
+            Sign Up
+          </Link>
+      }
       <h1>Welcome to Remix</h1>
       <ul>
         <li>
