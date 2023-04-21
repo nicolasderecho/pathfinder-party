@@ -1,0 +1,2 @@
+DATABASE_URL="postgresql://postgres:postgres@127.0.0.1:5432/pathfinder?schema=public"
+SESSION_SECRET="b5f0f25df60b6c3ff4367db56420f0ee"
